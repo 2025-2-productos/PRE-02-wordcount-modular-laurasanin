@@ -1,9 +1,8 @@
 import os
 
-from homework.src.wordcount import main
-
 
 def test_migracion():
+    from homework.src.wordcount import main
 
     main()
 
@@ -18,4 +17,5 @@ def test_migracion():
         results[key] = value
 
     assert results.get("computational", 0) == "3"
+    assert results.get("analytics", 0) == "5"
     assert results.get("analytics", 0) == "5"
