@@ -1,6 +1,6 @@
 import os
 
-from homework.src.wordcount import main
+from ..src.wordcount import main
 
 
 def test_migracion():
@@ -8,9 +8,10 @@ def test_migracion():
     main()
 
     if not os.path.exists("data/output/results.tsv"):
-        raise FileNotFoundError("El archivo results.tsv no existe.")
+        raise FileNotFoundError("El archivo results.tsv no existe")
 
     results = {}
+
     with open("data/output/results.tsv", "r", encoding="utf-8") as f:
         lines = f.readlines()
     for line in lines:

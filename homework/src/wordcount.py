@@ -1,34 +1,28 @@
-### wordcount.py
-
 # obtain a list of files in the input directory
 
+import sys
 
 from ._internals.count_words import count_words
 from ._internals.preprocess_lines import preprocess_lines
 from ._internals.read_all_lines import read_all_lines
 from ._internals.split_into_words import split_into_words
-from ._internals.write_count_words import write_count_words
+from ._internals.write_word_counts import write_count_words
 
 
 def main():
 
-    input_folder = "data/input/"
-    output_folder = "data/output/"
+    if len(sys.argv) != 3:
+        print("Usage: python3 -m homework <input_folder> <output_folder>")
+        sys.exit(1)
 
-    ## mover a la función read_all_lines
+    input_folder = sys.argv[1]
+    output_folder = sys.argv[2]
+
     all_lines = read_all_lines(input_folder)
-
-    ### mover a la función preprocess_lines
     all_lines = preprocess_lines(all_lines)
-
-    ### mover "split_into_words"
     words = split_into_words(all_lines)
-
-    ### mover "count_words"
     counter = count_words(words)
-
-    ### mover "write_count_words"
-    write_count_words(counter,output_folder)
+    write_count_words(counter, output_folder)
 
 
 if __name__ == "__main__":
